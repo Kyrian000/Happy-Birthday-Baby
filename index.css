@@ -1,0 +1,405 @@
+  /* ---- DESKTOP BLOCKER ---- */
+  #desktop-blocker {
+    display: none;
+    position: fixed; inset: 0;
+    background: #1a0a0f;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 24px;
+    font-family: 'Playfair Display', serif;
+    color: #f5d0c8;
+    text-align: center;
+    padding: 40px;
+  }
+  #desktop-blocker .phone-icon {
+    font-size: 80px;
+    animation: wiggle 1.5s ease-in-out infinite;
+  }
+  #desktop-blocker h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  #desktop-blocker p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2vw, 22px);
+    color: #d4a0a0;
+    margin: 0;
+    max-width: 500px;
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-12deg); }
+    50% { transform: rotate(12deg); }
+  }
+
+  /* Show blocker on tablet/desktop */
+  @media (min-width: 600px) {
+    #desktop-blocker { display: flex; }
+    #app { display: none; }
+  }
+
+  /* ---- GLOBAL ---- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose: #e8637a;
+    --blush: #f5d0c8;
+    --cream: #fdf6f0;
+    --deep: #1a0a0f;
+    --text: #3d1a1f;
+    --gold: #c9956d;
+  }
+
+  body {
+    background: var(--deep);
+    font-family: 'Lora', serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ---- PARTICLE CANVAS ---- */
+  #particles {
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ---- APP WRAPPER ---- */
+  #app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+  }
+
+  /* ---- HERO / HEADER ---- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(232,99,122,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .birthday-tag {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 14vw, 80px);
+    line-height: 1;
+    color: var(--blush);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #c9a8b0;
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 45%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.4s;
+  }
+  .scroll-hint span {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8c5560;
+    font-family: 'Lora', serif;
+  }
+  .scroll-arrow {
+    width: 20px; height: 20px;
+    border-right: 2px solid var(--rose);
+    border-bottom: 2px solid var(--rose);
+    transform: rotate(45deg);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* ---- PETAL DECORATIONS ---- */
+  .petal {
+    position: absolute;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  /* ---- LETTER SECTION ---- */
+  .letter-section {
+    padding: 0 0 80px;
+    position: relative;
+  }
+
+  .section-label {
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+  }
+  .section-label.visible { animation: fadeUp 0.7s ease forwards; }
+
+  .letter-card {
+    margin: 0 20px;
+    background: var(--cream);
+    border-radius: 4px 4px 24px 24px;
+    padding: 40px 28px 48px;
+    position: relative;
+    box-shadow:
+      0 4px 24px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,149,109,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.8);
+    opacity: 0;
+  }
+  .letter-card.visible { animation: fadeUp 0.9s ease forwards 0.1s; }
+
+  /* Paper texture lines */
+  .letter-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      rgba(201,149,109,0.12) 28px
+    );
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Red margin line */
+  .letter-card::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 58px;
+    width: 1px;
+    background: rgba(232,99,122,0.3);
+    border-radius: 1px;
+  }
+
+  .letter-date {
+    text-align: right;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 12px;
+    color: #9e7070;
+    margin-bottom: 28px;
+  }
+
+  .letter-greeting {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .letter-body p {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    line-height: 1.85;
+    color: #3d2226;
+    margin-bottom: 16px;
+  }
+
+  .letter-body p:last-child { margin-bottom: 0; }
+
+  .letter-sign {
+    margin-top: 32px;
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--rose);
+  }
+  .letter-sign small {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    color: #9e7070;
+    margin-top: 4px;
+  }
+
+  /* ---- PHOTOS SECTION ---- */
+  .photos-section {
+    padding: 20px 0 80px;
+    position: relative;
+  }
+
+  .photos-label {
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+  }
+  .photos-label.visible { animation: fadeUp 0.7s ease forwards; }
+
+  .swiper {
+    padding: 12px 20px 50px !important;
+    overflow: none;
+  }
+
+  .swiper-wrapper { align-items: center; }
+
+  .swiper-slide {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    aspect-ratio: 4/5;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .swiper-slide-active {
+    transform: scale(1);
+    box-shadow: 0 16px 60px rgba(232,99,122,0.35);
+  }
+
+  .swiper-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Placeholder slides for demo */
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 20px;
+  }
+  .photo-placeholder .emoji { font-size: 48px; font-style: normal; }
+
+  .slide-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 20px 16px;
+    background: linear-gradient(transparent, rgba(20,8,12,0.85));
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(245,208,200,0.9);
+    text-align: center;
+  }
+
+  .swiper-pagination-bullet {
+    background: var(--gold) !important;
+    opacity: 0.4;
+    width: 6px !important; height: 6px !important;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    width: 18px !important;
+    border-radius: 3px !important;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer {
+    padding: 40px 24px 60px;
+    text-align: center;
+    position: relative;
+  }
+
+  .footer-heart {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 16px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  .footer-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--blush);
+    opacity: 0.7;
+  }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating petals animation */
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+  }
+
+  .floating-petal {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    font-size: 14px;
+    animation: float linear infinite;
+  }

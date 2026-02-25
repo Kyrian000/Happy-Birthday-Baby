@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<!-- Swiper JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<!-- stylesheet -->
+<link rel="stylesheet" href="index.css">
+
+<style>
+</style>
+</head>
+<body>
+
+<!-- DESKTOP BLOCKER -->
+<div id="desktop-blocker">
+  <div class="phone-icon">📱</div>
+  <h1>Switch to Mobile</h1>
+  <p>This little surprise was made especially for a phone screen. Open it on your mobile for the full experience 💕</p>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <canvas id="particles"></canvas>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="birthday-tag">A very special day</p>
+    <h1 class="hero-title"><em>Happy</em><br>Birthday</h1>
+    <p class="hero-subtitle">For the one who makes every day brighter ✨</p>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Letter -->
+  <section class="letter-section">
+    <p class="section-label" data-reveal>— a letter for you —</p>
+
+    <div class="letter-card" data-reveal>
+      <p class="letter-date">February 26, 2026</p>
+      <p class="letter-greeting">My dearest coconut head,</p>
+      <div class="letter-body">
+        <p>
+          Hey Baby. To be honest, I'm a little inarticulate writing this, and you know how much of a
+          yapper I usually am. I've been trying to find the right words for weeks, and I still can't 
+          express it properly. So instead of trying to be eloquent, I'm just going to say it straight 
+          from the heart: I love you and you mean the world to me.
+        </p>
+        <p>
+           You are the most incredible person I've ever known. It took you some time to come out of your
+           shell, and I am grateful you did. Every moment with you is a treasure, and I cherish every memory 
+           we've made together.
+        </p>
+        <p>
+          You have so much potential. The gift I got you is a small token of my belief in you and your dreams. 
+          I know you can achieve anything you set your mind to, and I will be there cheering you on every step 
+          of the way. Also, I didn't get the exact necklace Gold sent me, but I hope you like it. Wetin I waka 
+          before I see am eh. 
+
+        </p>
+        <p>
+          So here's to you on your birthday: may today feel as wonderful as you make me feel
+          every day. You deserve the whole world, and I'm going to spend every day trying to
+          give you pieces of it.
+        </p>
+        <p>
+          Forever yours and impossibly in love with you 🌹
+        </p>
+      </div>
+      <div class="letter-sign">
+        Yours always
+        <small>Bueze...</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section class="photos-section">
+    <p class="photos-label" data-reveal>— our moments —</p>
+
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+          <img src="costume.jpeg" alt="Our moment">     
+        </div>
+
+        <!-- Slide 2: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+          <img src="sports.jpeg" alt="Our moment">     
+        </div>
+
+        <!-- Slide 3: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+          <img src="hmmm.jpeg" alt="Our moment">     
+        </div>
+
+        <!-- Slide 4: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+          <img src="mimi.jpeg" alt="Our moment">     
+        </div>
+
+        <!-- Slide 5: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+            <video autoplay muted controls src="carry.mp4"></video>
+        </div>
+
+        <!-- Slide 6: -->
+        <div class="swiper-slide" style="background: linear-gradient(135deg, #3d1a1f 0%, #6b2c38 100%);">
+            <video autoplay muted controls src="grwm.mp4"></video>
+        </div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span class="footer-heart">💖</span>
+    <p class="footer-text">Happy Birthday, my love</p>
+  </footer>
+
+</div>
+
+<script>
+  // ---- SWIPER ----
+  const swiper = new Swiper('.mySwiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 0,
+      stretch: -20,
+      depth: 120,
+      modifier: 1.5,
+      slideShadows: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+    },
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+  });
+
+  // ---- SCROLL REVEAL ----
+  const reveals = document.querySelectorAll('[data-reveal]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ---- FLOATING PETALS ----
+  const petalEmojis = ['🌸', '🌹', '✨', '💗', '🌺'];
+  const count = 12;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'floating-petal';
+    el.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    el.style.cssText = `
+      left: ${Math.random() * 100}vw;
+      animation-duration: ${8 + Math.random() * 10}s;
+      animation-delay: ${Math.random() * 12}s;
+      font-size: ${10 + Math.random() * 14}px;
+      opacity: ${0.3 + Math.random() * 0.5};
+    `;
+    document.body.appendChild(el);
+  }
+
+  // ---- PARTICLE CANVAS ----
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function createParticle() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.3,
+      alpha: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.3 + 0.05,
+      drift: (Math.random() - 0.5) * 0.2,
+    };
+  }
+
+  for (let i = 0; i < 80; i++) particles.push(createParticle());
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232,99,122,${p.alpha})`;
+      ctx.fill();
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -4) {
+        p.y = canvas.height + 4;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+</script>
+</body>
+</html>
